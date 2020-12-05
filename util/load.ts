@@ -1,5 +1,10 @@
-export default async function inputStrings(day: number) {
+export async function inputString(day: number) {
   const s = await Deno.readTextFile(`${day.toString()}/input`);
+  return s;
+}
+
+export default async function inputStrings(day: number) {
+  const s = await inputString(day);
   return s.split('\n');
 }
 
