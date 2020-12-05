@@ -1,7 +1,6 @@
-import { inputString } from "../util/load.ts";
+import puzzle from '../util/puzzle.ts';
 
-const s = await inputString(4);
-const passports = s.split(/\n\n/).map(s => s.split(/\s+/));
+const passports = (await puzzle(import.meta).sections()).map(s => s.split(/\s+/));
 
 function isValid(passport: string[]) {
   const fields = ['byr','iyr','eyr','hgt','hcl','ecl','pid'];

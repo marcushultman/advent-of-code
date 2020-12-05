@@ -1,7 +1,7 @@
-import { inputNumbers } from "../util/load.ts";
+import puzzle from '../util/puzzle.ts';
 import solve from "./1.ts";
 
-const numbers = await inputNumbers(1);
+const numbers = await puzzle(import.meta).numbers();
 
 for (let i = 0; i < numbers.length; ++i) {
   const a = numbers[i];

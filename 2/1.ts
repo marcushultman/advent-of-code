@@ -1,7 +1,7 @@
-import inputStrings from "../util/load.ts";
+import puzzle from '../util/puzzle.ts';
 import { extractPassword } from "./common.ts";
 
-const lines = await inputStrings(2);
+const lines = await puzzle(import.meta).strings();
 
 function isValid({ n1, n2, c, word }: ReturnType<typeof extractPassword>) {
   const d = [...word].map(q => Number(q === c)).reduce((s, i) => s + i, 0);

@@ -1,6 +1,6 @@
-import inputStrings from "../util/load.ts";
+import puzzle from '../util/puzzle.ts';
 
-const lines = await inputStrings(3);
+const lines = await puzzle(import.meta).strings();
 const concat = [...lines.reduce((all, line) => all + line, '')];
 const width = lines[0].length;
 

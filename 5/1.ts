@@ -1,8 +1,8 @@
-import inputStrings from "../util/load.ts";
+import puzzle from '../util/puzzle.ts';
 
 export const seatId = (s: string) => parseInt([...s].map(c => 'FBLR'.indexOf(c) & 1).join(''), 2);
 
 if (import.meta.main) {
-  const lines = await inputStrings(5);
-  console.log(lines.reduce((max, line) => Math.max(max, seatId(line)), 0));
+  const ids = await puzzle(import.meta).map(seatId);
+  console.log(ids.reduce((a, b) => Math.max(a, b), 0));
 }
