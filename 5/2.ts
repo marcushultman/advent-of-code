@@ -1,5 +1,5 @@
 import puzzle from '../util/puzzle.ts';
-import { seatId } from "./1.ts";
+import { seatId } from './1.ts';
 
 const ids = await puzzle(import.meta).map(seatId);
 ids.sort();

@@ -1,5 +1,5 @@
 import puzzle from '../util/puzzle.ts';
-import solve from "./1.ts";
+import solve from './1.ts';
 
 const numbers = await puzzle(import.meta).numbers();
 

@@ -1,5 +1,5 @@
 import puzzle from '../util/puzzle.ts';
-import { extractPassword } from "./common.ts";
+import { extractPassword } from './common.ts';
 
 const lines = await puzzle(import.meta).strings();
 
