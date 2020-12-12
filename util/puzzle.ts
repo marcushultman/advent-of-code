@@ -2,8 +2,8 @@ import * as path from 'https://deno.land/std@0.79.0/path/mod.ts';
 import { readLines, readStringDelim } from "https://deno.land/std@0.79.0/io/mod.ts";
 import { from } from 'https://raw.githubusercontent.com/marcushultman/rxjs/deno-dist/index.ts'
 
-export default function puzzle(meta: ImportMeta) {
-  const file = path.join(path.dirname(new URL(meta.url).pathname), 'input');
+export default function puzzle(meta: ImportMeta, test = false) {
+  const file = path.join(path.dirname(new URL(meta.url).pathname), test ? 'test' : 'input');
   const string = () => Deno.readTextFile(file);
   const strings = async () => {
     return (await string()).split('\n');
