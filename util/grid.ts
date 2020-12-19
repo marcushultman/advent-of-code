@@ -62,3 +62,39 @@ export class BoundedGrid<T> {
     return new BoundedGrid<T>(lines.map(map).flat(), lines.length ? lines[0].length : 0);
   }
 }
+
+export class UnboundedGrid<T> {
+  constructor(private dimens: number, private data = new Map<string, T>()) {
+  }
+  private static index(c: number[]) {
+    return c.join(',');
+  }
+  get(...c: number[]) {
+    return this.data.get(UnboundedGrid.index(c));
+  }
+  put(item: T, ...c: number[]): UnboundedGrid<T> {
+    this.data.set(UnboundedGrid.index(c), item);
+    return this;
+  }
+  delete(...c: number[]) {
+    this.data.delete(UnboundedGrid.index(c));
+    return this;
+  }
+  equals(other: UnboundedGrid<T>, eq = defaultEq) {
+    const keys = [...this.data.keys()].sort();
+    const otherKeys = [...other.data.keys()].sort();
+    return keys.length === otherKeys.length &&
+        keys.every((k, i) => eq(this.data.get(k)!, other.data.get(otherKeys[i])));
+  }
+  clone(clone = defaultClone) {
+    return new UnboundedGrid(this.dimens, new Map([...this.data.entries()].map(([k, v]) => [k, clone(v)])));
+  }
+  toString() {
+    return this.coords().join(',');
+  }
+  coords() {
+    return [...this.data.entries()].map(([k, item]) => {
+      return { item, c: k.split(',').map(Number) };
+    });
+  }
+}
