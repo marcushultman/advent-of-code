@@ -24,12 +24,9 @@ export class BoundedGrid<T> {
   private index(x: number, y: number) {
     return y * this.width + x;
   }
-  private insert({ grid, offset }: GridInsertion<T>) {
-    const copyRange = (start: number, arr: T[]) => this.data.splice(start, arr.length, ...arr);
-    range(Math.min(this.height, offset.y, grid.height)).forEach(dy => {
-      const start = grid.index(0, dy);
-      const end = start + Math.min(this.width, offset.x + grid.width);
-      copyRange(this.index(offset.y + dy, offset.x), grid.data.slice(start, end));
+  insert({ grid, offset }: GridInsertion<T>) {
+    grid.coords().forEach(({ item, x, y }) => {
+      this.put(offset.x + x, offset.y + y, item);
     });
   }
 
@@ -46,14 +43,46 @@ export class BoundedGrid<T> {
   clone(clone = defaultClone) {
     return new BoundedGrid(this.data.map(clone), this.width);
   }
-  toString() {
+  rows() {
     return range(this.height)
         .map(y => this.index(0, y))
-        .map(i => this.data.slice(i, i + this.width).join(''))
-        .join('\n');
+        .map(i => this.data.slice(i, i + this.width).join(''));
+  }
+  toString() {
+    return this.rows().join('\n');
   }
   coords() {
     return this.data.map((item, i) => ({ item, x: i % this.width, y: Math.floor(i / this.width) }));
+  }
+  shrink(x0: number, x1: number, y0: number, y1: number) {
+    this.data.splice((this.height - y1) * this.width);
+    this.data.splice(0, y0 * this.width);
+    this.data = this.data.filter((_, i) => (i % this.width) >= x0 && (i % this.width) < (this.width - x1))
+    this.width -= (x0 + x1);
+  }
+  transpose() {
+    const old = this.clone();
+    for (let x = 0; x < this.width; ++x) {
+      for (let y = 0; y < this.height; ++y) {
+        this.put(y, x, old.get(x, y)!);
+      }
+    }
+  }
+  flipHorizontal() {
+    const old = this.clone();
+    for (let x = 0; x < this.width; ++x) {
+      for (let y = 0; y < this.height; ++y) {
+        this.put(this.width - 1 - x, y, old.get(x, y)!);
+      }
+    }
+  }
+  flipVertical() {
+    const old = this.clone();
+    for (let x = 0; x < this.width; ++x) {
+      for (let y = 0; y < this.height; ++y) {
+        this.put(x, this.height - 1 - y, old.get(x, y)!);
+      }
+    }
   }
   static charGridFromLines(lines: string[]) {
     return this.fromLines(lines, line => [...line]);
@@ -68,6 +97,9 @@ export class UnboundedGrid<T> {
   }
   private static index(c: number[]) {
     return c.join(',');
+  }
+  has(...c: number[]) {
+    return this.data.has(UnboundedGrid.index(c));
   }
   get(...c: number[]) {
     return this.data.get(UnboundedGrid.index(c));
