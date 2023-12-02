@@ -1,7 +1,7 @@
-import { BoundedGrid, UnboundedGrid } from "../util/grid.ts";
-import puzzle from '../util/puzzle.ts';
-import genN from '../util/neighbor.ts';
-import { vec2 } from '../util/vector.ts';
+import { BoundedGrid, UnboundedGrid } from "../../util/grid.ts";
+import puzzle from '../../util/puzzle.ts';
+import genN from '../../util/neighbor.ts';
+import { vec2 } from '../../util/vector.ts';
 
 const toVec2 = (c: number[]) => new vec2(c[0], c[1]);
 const N = genN(2).filter(e => Math.abs(e[0]) != Math.abs(e[1])).map(toVec2);

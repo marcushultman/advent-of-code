@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 export const seatId = (s: string) => parseInt([...s].map(c => 'FBLR'.indexOf(c) & 1).join(''), 2);
 

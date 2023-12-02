@@ -1,5 +1,5 @@
-import puzzle from '../util/puzzle.ts';
-import chineseRemainder from '../util/crt.ts';
+import puzzle from '../../util/puzzle.ts';
+import chineseRemainder from '../../util/crt.ts';
 
 function findT(lines: string[]) {
   const deps = lines[1]

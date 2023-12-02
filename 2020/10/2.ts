@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const numbers = new Set(await puzzle(import.meta).numbers());
 numbers.add(164);

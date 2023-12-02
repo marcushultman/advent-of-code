@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 import { map, reduce } from 'https://raw.githubusercontent.com/marcushultman/rxjs/deno-dist/operators/index.ts'
 
 const sections = await puzzle(import.meta).sections();

@@ -1,5 +1,5 @@
-import puzzle from '../util/puzzle.ts';
-import { intersection } from '../util/set.ts';
+import puzzle from '../../util/puzzle.ts';
+import { intersection } from '../../util/set.ts';
 
 const sections = await puzzle(import.meta).sections();
 

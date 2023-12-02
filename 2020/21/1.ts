@@ -1,5 +1,5 @@
-import puzzle from '../util/puzzle.ts';
-import { union, intersection } from '../util/set.ts';
+import puzzle from '../../util/puzzle.ts';
+import { union, intersection } from '../../util/set.ts';
 
 const foods = await puzzle(import.meta).map(line => {
   const [, a, b] = line.match(/(.*)\s\(contains (.*)\)/)!;

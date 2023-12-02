@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const PRE = 25;
 const numbers = await puzzle(import.meta).numbers();

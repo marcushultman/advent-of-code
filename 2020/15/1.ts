@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const s = await puzzle(import.meta).string();
 const start = s.split(',').map(Number);

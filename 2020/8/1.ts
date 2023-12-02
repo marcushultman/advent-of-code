@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const ops = await puzzle(import.meta, false).map(l => {
   return { op : l.substr(0, 3), val: (l[4] === '-' ? -1 : 1) * Number(l.substr(5)) };

@@ -1,5 +1,5 @@
-import { UnboundedGrid } from "../util/grid.ts";
-import puzzle from '../util/puzzle.ts';
+import { UnboundedGrid } from "../../util/grid.ts";
+import puzzle from '../../util/puzzle.ts';
 
 function recurse(n: number): number[][] {
   const l = n > 1 ? recurse(n - 1) : [[]];

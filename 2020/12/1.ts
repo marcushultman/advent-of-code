@@ -1,6 +1,6 @@
-import puzzle from '../util/puzzle.ts';
-import { vec2 } from '../util/vector.ts';
-import { mat2 } from '../util/matrix.ts';
+import puzzle from '../../util/puzzle.ts';
+import { vec2 } from '../../util/vector.ts';
+import { mat2 } from '../../util/matrix.ts';
 
 const s = await puzzle(import.meta).map(s => ({ dir: s.slice(0, 1), amt: Number(s.slice(1)) }));
 

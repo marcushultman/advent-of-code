@@ -1,5 +1,5 @@
-import type { BoundedGrid } from "../util/grid.ts";
-import puzzle from '../util/puzzle.ts';
+import type { BoundedGrid } from "../../util/grid.ts";
+import puzzle from '../../util/puzzle.ts';
 
 function adj(a: BoundedGrid<string>, x: number, y: number) {
   return [[-1,-1],[0,-1],[1,-1],[-1,0],[1,0],[-1,1],[0,1],[1,1]]

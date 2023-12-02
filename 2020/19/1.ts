@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const [ruleSection, input] = await puzzle(import.meta).sections();
 

@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const playerSections = await puzzle(import.meta, Deno.args.includes('--test')).sections();
 const players = playerSections.map(section => section.split('\n').slice(1).map(Number));

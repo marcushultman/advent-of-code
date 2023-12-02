@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const publicKeys = await puzzle(import.meta, Deno.args.includes('--test')).map(Number);
 

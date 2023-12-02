@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const [fieldsSection, ticketSection, nearbySection] = await puzzle(import.meta, false).sections();
 

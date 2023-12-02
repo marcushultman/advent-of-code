@@ -1,4 +1,4 @@
-import puzzle from '../util/puzzle.ts';
+import puzzle from '../../util/puzzle.ts';
 
 const passports = (await puzzle(import.meta).sections()).map(s => s.split(/\s+/));
 

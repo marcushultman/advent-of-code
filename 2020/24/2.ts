@@ -1,6 +1,6 @@
-import puzzle from '../util/puzzle.ts';
-import { UnboundedGrid } from '../util/grid.ts';
-import { vec2 } from '../util/vector.ts';
+import puzzle from '../../util/puzzle.ts';
+import { UnboundedGrid } from '../../util/grid.ts';
+import { vec2 } from '../../util/vector.ts';
 
 const lines = await puzzle(import.meta, Deno.args.includes('--test')).map(l => [...l]);
 
