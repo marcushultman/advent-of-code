@@ -1,6 +1,6 @@
-import * as path from 'https://deno.land/std@0.79.0/path/mod.ts';
-import { readLines, readStringDelim } from "https://deno.land/std@0.79.0/io/mod.ts";
-import { from } from 'https://raw.githubusercontent.com/marcushultman/rxjs/deno-dist/index.ts'
+import * as path from "std/path/mod.ts";
+import { readLines, readStringDelim } from "std/io/mod.ts";
+import { from } from "https://esm.sh/rxjs@7.8.1";
 import { BoundedGrid } from "./grid.ts";
 
 export default function puzzle(meta: ImportMeta, test = false) {
