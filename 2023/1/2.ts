@@ -23,9 +23,11 @@ export function calibrationValues(lines: string[]) {
 }
 
 Deno.test('2', async () => {
-  const lines = await puzzle(import.meta, true).strings();
+  const lines = await puzzle(import.meta, 'test2').strings();
   assert(calibrationValues(lines).reduce((a, b) => a + b, 0) === 281);
 });
 
-const lines = await puzzle(import.meta).strings();
-console.log(calibrationValues(lines).reduce((a, b) => a + b, 0));
+if (import.meta.main) {
+  const lines = await puzzle(import.meta).strings();
+  console.log(calibrationValues(lines).reduce((a, b) => a + b, 0));
+}
