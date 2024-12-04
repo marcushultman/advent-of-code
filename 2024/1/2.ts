@@ -1,6 +1,7 @@
 import { assert } from 'std/assert/assert.ts';
 import puzzle from 'util/puzzle.ts';
 import { parseLists } from './1.ts';
+import { testName } from 'util/test.ts';
 
 function simScore(lines: string[]) {
   const [l1, l2] = parseLists(lines);
@@ -13,7 +14,7 @@ function simScore(lines: string[]) {
   }).reduce((a, b) => a + b, 0);
 }
 
-Deno.test('2', async () => {
+Deno.test(testName(import.meta), async () => {
   const lines = await puzzle(import.meta, true).strings();
   assert(simScore(lines) == 31);
 });

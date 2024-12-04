@@ -1,5 +1,6 @@
 import { assert } from 'std/assert/assert.ts';
 import puzzle from 'util/puzzle.ts';
+import { testName } from 'util/test.ts';
 
 export function parseLists(lines: string[]) {
   const { l1, l2 } = lines
@@ -18,7 +19,7 @@ function sumDist(lines: string[]) {
   return l1.map((a, i) => Math.abs(a - l2[i])).reduce((a, b) => a + b, 0);
 }
 
-Deno.test('1', async () => {
+Deno.test(testName(import.meta), async () => {
   const lines = await puzzle(import.meta, true).strings();
   assert(sumDist(lines) == 11);
 });
