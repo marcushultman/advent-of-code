@@ -6,7 +6,9 @@ function toReport(line: string) {
   return line.split(/\s+/).map(Number);
 }
 
-function isSafe(report: ReturnType<typeof toReport>) {
+type Report = ReturnType<typeof toReport>;
+
+function isSafe(report: Report) {
   const diffTest = report[0] < report.at(-1)!
     ? (d: number) => 1 <= d && d <= 3
     : (d: number) => -3 <= d && d <= -1;
@@ -28,4 +30,26 @@ Deno.test('part 1', async () => {
   const bytes = await fetchInput(import.meta);
   const lines = await Array.fromAsync(toLines(bytes));
   console.log(lines.map(toReport).filter(isSafe).length);
+});
+
+function isSafe2(report: Report) {
+  if (isSafe(report)) {
+    return true;
+  }
+  for (let i = 0; i < report.length; ++i) {
+    if (isSafe(report.toSpliced(i, 1))) {
+      return true;
+    }
+  }
+  return false;
+}
+
+Deno.test('part 2 example', () => {
+  assertEquals(EXAMPLE.map(toReport).filter(isSafe2).length, 4);
+});
+
+Deno.test('part 2', async () => {
+  const bytes = await fetchInput(import.meta);
+  const lines = await Array.fromAsync(toLines(bytes));
+  console.log(lines.map(toReport).filter(isSafe2).length);
 });
